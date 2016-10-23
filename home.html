@@ -23,8 +23,8 @@
                     <p id="hospital-number-new" class="home-text new-texts4"><a href="tel:4126925325"></a></p>
                     <p class="home-text hospital-wait-text">total min.</p>
                     <p id = "label-wait1" class="home-text">miles</p>
-                    <p id= "label-wait2" class="home-text">min. distance</p>
-                    <p id="label-wait3" class="home-text">min. wait</p>
+                    <p id= "label-wait2" class="home-text">travel (mins)</p>
+                    <p id="label-wait3" class="home-text">wait (mins)</p>
                     <p id="dist-miles" class="home-text new-wait">...</p>
                     <p id="dist-time" class="home-text new-wait">...</p>
                     <p id="hosp-time" class="home-text new-wait">...</p>
@@ -46,8 +46,8 @@
                     <p id="hospital-name" class="home-text">Loading...</p>
                     <p id="hospital-address" class="home-text"><a href="https://www.google.com/maps/dir//Children's+Hospital+of+Pittsburgh+of+UPMC,+4401+Penn+Ave,+Pittsburgh,+PA+15224/" target="_blank"></a></p>
                     <p id="hospital-number" class="home-text"><a href="tel:4126925325"></a></p>
-                    <p id="hospital-wait-text" class="home-text">min. wait</p>
-                    <p id="hospital-wait" class="home-text">44</p>
+                    <p id="hospital-wait-text" class="home-text">wait (mins)</p>
+                    <p id="hospital-wait" class="home-text">...</p>
                 </div>
             </div>
         </div>
@@ -91,6 +91,7 @@
                                     document.getElementById('hospital-name').innerHTML = name;
                                     document.getElementById('hospital-address').innerHTML = "<a href=\"https://www.google.com/maps/dir/"+ "My%20location" +"/"+address+"/\" target=\"_blank\">" + address + "</a>";
                                     document.getElementById('hospital-number').innerHTML = "<a href=\"tel:"+newphone+"\">"+phone+"</a>";
+                                    document.getElementById('hospital-wait').innerHTML = "44";
                                 }
                             }
                             
