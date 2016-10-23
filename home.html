@@ -1,0 +1,74 @@
+<! DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <link rel = "stylesheet" type = "text/css" href = "css/style.css">
+        <title>Speed ER Home</title>
+    </head>
+    <body id = "home">
+        <div id = "welcome">Welcome, George Saieed!</div>
+        <img id="settings" src = "img/settings.svg">
+        <div id = "drop-down">
+            <p class="drop-options"><a class="nounderline" href="home.html">Home</a></p>
+            <p class="drop-options"><a class="nounderline" href="profile.html">Profile</a></p>
+            <p class="drop-options"><a class="nounderline" href="login.html">Logout</a></p>
+        </div>
+        <br>
+        <div id = "da-cards">
+            <div>
+                <div id="injury-report" class = "home-card">
+                    <img id="injury-img" src="img/injury.svg">
+                    <p id="report-text" class="home-text">Report An Injury</p>
+                    <p></p>
+                </div>
+                <div id="nearest-hospital" class = "home-card">
+                    <p id="near-text" class="home-text">Nearest Hospital</p>
+                    <p id="hospital-name" class="home-text">UPMC Children's Hospital</p>
+                    <p id="hospital-address" class="home-text"><a href="https://www.google.com/maps/dir//Children's+Hospital+of+Pittsburgh+of+UPMC,+4401+Penn+Ave,+Pittsburgh,+PA+15224/" target="_blank">4401 Penn Ave, Pittsburgh, PA 15224</a></p>
+                    <p id="hospital-number" class="home-text"><a href="tel:4126925325">412-692-5325</a></p>
+                    <p id="hospital-wait-text" class="home-text">min. wait</p>
+                    <p id="hospital-wait" class="home-text">44</p>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function geoFindNearestHospitals() {
+                alert("outide");
+                var dalats = "";
+                var dalongs = "";
+                if(!navigator.geolocation) {
+                    alert("not supported");
+                    return "geolocation isn't supported by your browser";
+                }
+
+                function success(position) {
+                    var finallat = position.coords.latitude;
+                    var finallong = position.coords.longitude;
+                    dalats = String(finallat);
+                    dalongs = String(finallong);
+                    var xhr = new XMLHttpRequest();
+                    var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+                    var params = "?location=" + dalats + "," + dalongs + "&radius=50000&" + "type=hospital&keyword=hospital&key=AIzaSyC5sRJ8pdNXNBL4W5IAEXEmLoTOeNU0Qyw";
+                    xhr.open("GET", url + params, true);
+                    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+                    xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                    }	
+                    }
+                    xhr.send(null);
+                }
+                function error() {
+                    output = "Unable to retrieve your location";
+                };
+                
+                navigator.geolocation.getCurrentPosition(success, error);
+                
+            }
+            window.onload = geoFindNearestHospitals;
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src = "js/script2.js"></script>
+    </body>
+</html>
